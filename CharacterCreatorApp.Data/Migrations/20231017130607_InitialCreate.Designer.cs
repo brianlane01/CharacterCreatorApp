@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharacterCreatorApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231016180209_InitialCreate")]
+    [Migration("20231017130607_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,64 @@ namespace CharacterCreatorApp.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CharacterCreatorApp.Data.Entities.RogueCharacterClassEntity", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CharacterId"));
+
+                    b.Property<int>("BodyType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BodyTypeSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CharacterName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("FaceStructure")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FaceStructureSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HairColor")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HairColorSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HeightSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SneakSkill")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SpecialAbility")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SpecialStarterWeapon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CharacterId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Rogues");
+                });
 
             modelBuilder.Entity("CharacterCreatorApp.Data.Entities.UserEntity", b =>
                 {
@@ -40,8 +98,10 @@ namespace CharacterCreatorApp.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -100,6 +160,122 @@ namespace CharacterCreatorApp.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("CharacterCreatorApp.Data.Entities.WarriorCharacterClassEntity", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CharacterId"));
+
+                    b.Property<int>("BodyType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BodyTypeSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CharacterName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("FaceStructure")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FaceStructureSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HairColor")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HairColorSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HeightSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SpecialAbility")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SpecialStarterWeapon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeaponSkill")
+                        .HasColumnType("int");
+
+                    b.HasKey("CharacterId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Warriors");
+                });
+
+            modelBuilder.Entity("CharacterCreatorApp.Data.Entities.WizardCharacterClassEntity", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CharacterId"));
+
+                    b.Property<int>("BodyType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BodyTypeSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CharacterName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("FaceStructure")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FaceStructureSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HairColor")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HairColorSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HeightSelection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MagicSkill")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SpecialAbility")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SpecialStarterWeapon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CharacterId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Wizards");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
@@ -237,6 +413,39 @@ namespace CharacterCreatorApp.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("CharacterCreatorApp.Data.Entities.RogueCharacterClassEntity", b =>
+                {
+                    b.HasOne("CharacterCreatorApp.Data.Entities.UserEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CharacterCreatorApp.Data.Entities.WarriorCharacterClassEntity", b =>
+                {
+                    b.HasOne("CharacterCreatorApp.Data.Entities.UserEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CharacterCreatorApp.Data.Entities.WizardCharacterClassEntity", b =>
+                {
+                    b.HasOne("CharacterCreatorApp.Data.Entities.UserEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

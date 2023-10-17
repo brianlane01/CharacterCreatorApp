@@ -32,11 +32,12 @@ namespace CharacterCreatorApp.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -160,6 +161,99 @@ namespace CharacterCreatorApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Rogues",
+                columns: table => new
+                {
+                    CharacterId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CharacterName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    HairColor = table.Column<int>(type: "int", nullable: false),
+                    HairColorSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FaceStructure = table.Column<int>(type: "int", nullable: false),
+                    FaceStructureSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BodyType = table.Column<int>(type: "int", nullable: false),
+                    BodyTypeSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Height = table.Column<int>(type: "int", nullable: false),
+                    HeightSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SpecialAbility = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SpecialStarterWeapon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SneakSkill = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rogues", x => x.CharacterId);
+                    table.ForeignKey(
+                        name: "FK_Rogues_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Warriors",
+                columns: table => new
+                {
+                    CharacterId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CharacterName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    HairColor = table.Column<int>(type: "int", nullable: false),
+                    HairColorSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FaceStructure = table.Column<int>(type: "int", nullable: false),
+                    FaceStructureSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BodyType = table.Column<int>(type: "int", nullable: false),
+                    BodyTypeSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Height = table.Column<int>(type: "int", nullable: false),
+                    HeightSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SpecialAbility = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SpecialStarterWeapon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WeaponSkill = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Warriors", x => x.CharacterId);
+                    table.ForeignKey(
+                        name: "FK_Warriors_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Wizards",
+                columns: table => new
+                {
+                    CharacterId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CharacterName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    HairColor = table.Column<int>(type: "int", nullable: false),
+                    HairColorSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FaceStructure = table.Column<int>(type: "int", nullable: false),
+                    FaceStructureSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BodyType = table.Column<int>(type: "int", nullable: false),
+                    BodyTypeSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Height = table.Column<int>(type: "int", nullable: false),
+                    HeightSelection = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SpecialAbility = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SpecialStarterWeapon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MagicSkill = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wizards", x => x.CharacterId);
+                    table.ForeignKey(
+                        name: "FK_Wizards_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -188,6 +282,11 @@ namespace CharacterCreatorApp.Data.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Rogues_UserId",
+                table: "Rogues",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "Users",
                 column: "NormalizedEmail");
@@ -198,6 +297,16 @@ namespace CharacterCreatorApp.Data.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Warriors_UserId",
+                table: "Warriors",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wizards_UserId",
+                table: "Wizards",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -217,6 +326,15 @@ namespace CharacterCreatorApp.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Rogues");
+
+            migrationBuilder.DropTable(
+                name: "Warriors");
+
+            migrationBuilder.DropTable(
+                name: "Wizards");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
