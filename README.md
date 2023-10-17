@@ -19,4 +19,4 @@ hairstyles, facial features, and clothing, so that I can design unique and diver
 ● The attributes can be persuasion, melee skill, ranged skill, speed, etc
 
 https://app.asana.com/0/1205732155380717/1205732164314639
-the above link is a linl to the Asana group that has the TASks and point assignments
+The above link is a link to the Asana group that has the Tasks and point assignments.
