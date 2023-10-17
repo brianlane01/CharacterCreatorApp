@@ -10,10 +10,14 @@ namespace CharacterCreatorApp.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) {}
 
+        public DbSet<WarriorCharacterClassEntity> Warriors {get; set;}
+        public DbSet<WizardCharacterClassEntity> Wizards {get; set;}
+        public DbSet<RogueCharacterClassEntity> Rogues {get; set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<UserEntity>().ToTable("Users");
+            
 
         }
     }
