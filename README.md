@@ -17,3 +17,6 @@ hairstyles, facial features, and clothing, so that I can design unique and diver
 5. I want the ability to use skill points to upgrade certain aspects of my character when creating
 ● When creating a character, the user should be able to divy up points to different attributes
 ● The attributes can be persuasion, melee skill, ranged skill, speed, etc
+
+https://app.asana.com/0/1205732155380717/1205732164314639
+the above link is a linl to the Asana group that has the TASks and point assignments
