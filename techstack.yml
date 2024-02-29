@@ -2,7 +2,7 @@ repo_name: brianlane01/CharacterCreatorApp
 report_id: 91444e8f393b67451951d657b95daa89
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-23T17:19:54+00:00'
+timestamp: '2024-02-29T19:35:09+00:00'
 requested_by: brianlane01
 provider: github
 branch: main
@@ -78,7 +78,7 @@ tools:
   last_updated_by: brianlane01
   last_updated_on: 2023-10-16 18:09:01.000000000 Z
 - name: Entity Framework Core
-  description: 'Lightweight and cross-platform version of the popular Entity Framework '
+  description: Lightweight and cross-platform version of the popular Entity Framework
   website_url: https://docs.microsoft.com/en-us/ef/core/
   version: 7.0.12
   license: MIT
